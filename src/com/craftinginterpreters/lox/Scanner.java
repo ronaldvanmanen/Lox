@@ -83,6 +83,11 @@ class Scanner {
     return true;
   }
 
+  private char peek() {
+    if (isAtEnd()) return '\0';
+    return source.charAt(current);
+  }  
+
   private void addToken(TokenType type) {
     addToken(type, null);
   }
