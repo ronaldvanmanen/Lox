@@ -68,6 +68,13 @@ class Scanner {
     return source.charAt(current++);
   }
 
+  private boolean match(char expected) {
+    if (isAtEnd()) return false;
+    if (source.charAt(current) != expected) return false;
+    current++;
+    return true;
+  }
+
   private void addToken(TokenType type) {
     addToken(type, null);
   }
