@@ -45,7 +45,10 @@ class Scanner {
       case '-': addToken(MINUS); break;
       case '+': addToken(PLUS); break;
       case ';': addToken(SEMICOLON); break;
-      case '*': addToken(STAR); break; 
+      case '*': addToken(STAR); break;
+      default:
+        Lox.error(line, "Unexpected character.");
+        break;      
     }
   }  
 
@@ -60,5 +63,5 @@ class Scanner {
   private void addToken(TokenType type, Object literal) {
     String text = source.substring(start, current);
     tokens.add(new Token(type, text, literal, line));
-  }  
+  }
 }
