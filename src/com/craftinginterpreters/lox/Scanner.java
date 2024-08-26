@@ -46,6 +46,14 @@ class Scanner {
       case '+': addToken(PLUS); break;
       case ';': addToken(SEMICOLON); break;
       case '*': addToken(STAR); break;
+      case '/':
+        if (advanceIf('/')) {
+          // A comment goes until the end of the line.
+          while (peek() != '\n' && !isAtEnd()) advance();
+        } else {
+          addToken(SLASH);
+        }
+        break;
       case '!':
         addToken(advanceIf('=') ? BANG_EQUAL : BANG);
         break;
